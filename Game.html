@@ -118,7 +118,6 @@
 			wall.blocksYou()
 		}
 
-		
 		//mobile device: MOVE FORWARD
 		if (touchingNow == true) {
 			let angle = camera.getAttribute("rotation") 
@@ -126,8 +125,8 @@
 			let changeZ = 0.25 * Math.cos(angle.y * Math.PI / 180) 
 			cameraPos.x -= changeX/4; 
 			cameraPos.z -= changeZ/4; 
+		}
 
-		
 		if (coins.every(coin => coin.collected==true)) {
 		    cameraFinalX = cameraPos.x
 		    cameraFinalZ = cameraPos.z
@@ -135,7 +134,6 @@
 		    return
 		}
 
-		}
 		for (let enemy of enemies) {
 			enemy.move()
 			enemy.resetsYou()
