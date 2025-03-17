@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bokor&family=Lilita+One&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap" rel="stylesheet">
+  <title>Mashrufur Rahman</title>
+  <style>
+    body {
+      text-align: center;
+      background: url("https://i.redd.it/4qx1rz0sz0id1.jpeg");
+      background-size: cover;
+      background-position: center;
+      color: cyan;
+      font-family: helvetica;
+    }
+    p {
+      font-family: "Bokor", system-ui;
+      font-size: 25px;
+    }
+    input {
+      font-family: "Edu AU VIC WA NT Pre", cursive;
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+	  
+  
+    }
+    input[type="submit"] {
+            font-family: "Sour Gummy", sans-serif;
+      background: darkblue;
+      color: purple;
+    }
+    img {
+      border-radius:50px;
+      }
+  </style>
+</head>
+<body>
+  <img src="https://i.imgur.com/4uDYgua_d.webp?maxwidth=520&shape=thumb&fidelity=high">
+  <p>Hi! I'm Mashrufur Rahman, a JGS Student. Input your Email for a sigma surprise!</p>
+  <input id="Name" type="Name" placeholder="Your Name">
+  <input id="Email" type="Email" placeholder="Your Email">
+  <input id="submit" type="submit">
+  
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+	  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDnCvprvwkEDsURXJ0r-rWyS2EPf_YOP6o",
+      authDomain: "mashrufur-rah.firebaseapp.com",
+      projectId: "mashrufur-rah",
+      storageBucket: "mashrufur-rah.firebasestorage.app",
+      messagingSenderId: "219715715818",
+      appId: "1:219715715818:web:f0f1de52382e30f5f78d93"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+	  const db = getDatabase(app);
+
+    const Name = document.querySelector("#Name") 
+    const Email = document.querySelector("#Email")
+    document.querySelector('#submit').addEventListener('click', Submit)
+
+
+    function Submit() {
+      const timestamp = buildTimestamp()
+      
+      set(ref(db, timestamp), {
+          Name: Name.value,
+        email: Email.value,
+      });
+
+      Name.value = ""
+      Email.value = ""
+    }
+
+
+
+
+    function buildTimestamp() {
+      const now = new Date();
+      let timestamp = now.getFullYear().toString() + "/";
+      //const month = now.toLocaleString('default', { month: 'long' });
+
+      let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+      month = month.toString()
+      month = addLeadingZero(month)
+      timestamp += month + "/"; 
+
+      let date = now.getDate().toString()
+      date = addLeadingZero(date)
+      timestamp += date + "/";
+
+      let hours = now.getHours().toString()
+      hours = addLeadingZero(hours)
+      timestamp += hours + ":";
+
+      let minutes = now.getMinutes().toString()
+      minutes = addLeadingZero(minutes)
+      timestamp += minutes + ":";
+
+      let seconds = now.getSeconds().toString()
+      seconds = addLeadingZero(seconds)
+      timestamp += seconds;
+    
+      return timestamp
+    }
+    
+    function addLeadingZero(units) {
+      if (units.length < 2) {
+        units = "0" + units
+      }
+      return units
+    }
+
+
+
+
+  </script>
+
+  
+  
+</body>
