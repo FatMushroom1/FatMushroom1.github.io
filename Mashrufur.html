@@ -39,6 +39,7 @@
   <p>Hi! I'm Mashrufur Rahman, a JGS Student. Input your Email for a sigma surprise!</p>
   <input id="Name" type="Name" placeholder="Your Name">
   <input id="Email" type="Email" placeholder="Your Email">
+  <input id="Question" type="Question" placeholder="What's your favorite color?">
   <input id="submit" type="submit">
   
   
@@ -63,6 +64,7 @@
     const app = initializeApp(firebaseConfig);
 	  const db = getDatabase(app);
 
+    const Question = document.querySelector("#Question") 
     const Name = document.querySelector("#Name") 
     const Email = document.querySelector("#Email")
     document.querySelector('#submit').addEventListener('click', Submit)
@@ -74,10 +76,12 @@
       set(ref(db, timestamp), {
           Name: Name.value,
         email: Email.value,
+        Question: Question.value,
       });
 
       Name.value = ""
       Email.value = ""
+      Question.value = ""
     }
 
 
