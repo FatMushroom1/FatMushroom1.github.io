@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Protest+Revolution&display=swap" rel="stylesheet">
+<style>
+	
+input {
+	font-size: 22px;
+	}
+
+
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #232323;
+  background-color: #0e263e
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: "Protest Revolution", sans-serif;
+  text-align: center;
+  font-size: 88px;
+  color: #a4a332;
+  margin: 60px 0 0 0;
+}
+h2 {
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  color: #b56b4b;
+  font-size: 35px;
+  margin: 0px 0 70px 0;
+}
+p {
+  color: rgba(69,500,50,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,195,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  font-family: "Sour Gummy", sans-serif;
+  background-image: url("https://www.tasteofhome.com/wp-content/uploads/2022/04/GettyImages-1284373968-scaled-e1649961562878.jpg")
+}
+.second{
+  font-family: "Sour Gummy", sans-serif;
+  background-image: url("https://i.pcmag.com/imagery/articles/07CTJydO3VQCGjsPoRrm4F0-1.fit_lim.v1726516956.jpg");
+}
+.dessert{
+  font-family: "Sour Gummy", sans-serif;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdoXqEM8QZc833_LVliJRnsDgtxpFb0ZWWQ&s");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Jonkler's Eatery</h1>
+<h2>A Sigma City Restaurant</h2>
+<div class="first">
+<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Moldy Cheese <span class="price">100 Aura Points</span><br />
+  <small>A very delicious Mix of old cheese and bacteria. With this, you'll definitely get some type of disease. </small></p>
+</div>
+
+<div class="second">
+<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Aerated Lunchly<span class="price">175 Aura Points</span><br />
+  <small>For those who know. If you don't know then you are not capable to be the next alpha. You must put your phone down while eating this meal. Even if it is for your safety.</small></p>
+</div>
+  
+<div class="dessert">
+<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Stillwater <span class="price">250 Aura Points</span><br />
+  <small>A Jonkler original drink. This is a very delicious mix of bacteria and old water, that has made it go still. A classic Jonkler delicacy. </small></p>
+</div>
+<br><br>
+  <input id="Name" type="Name" placeholder="Your Name">
+  <input id="Email" type="Email" placeholder="Your Email">
+  <input id="submit" type="submit">
+ <br><br>
+
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+  
+ <script type="module">
+   // Import the functions you need from the SDKs you need
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+	import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+	
+   // TODO: Add SDKs for Firebase products that you want to use
+   // https://firebase.google.com/docs/web/setup#available-libraries
+
+   // Your web app's Firebase configuration
+   const firebaseConfig = {
+     apiKey: "AIzaSyCHH6qBcKLpS7MZirzUohsDgrkUE0XMCHc",
+     authDomain: "mashrufur-project-3.firebaseapp.com",
+     projectId: "mashrufur-project-3",
+     storageBucket: "mashrufur-project-3.firebasestorage.app",
+     messagingSenderId: "26549139831",
+     appId: "1:26549139831:web:66c5d3a41a736d88988972"
+   };
+
+   // Initialize Firebase
+   const app = initializeApp(firebaseConfig);
+	const db = getDatabase(app);
+   const Name = document.querySelector("#Name") 
+   const Email = document.querySelector("#Email")
+	const prices = document.querySelectorAll(".price") 
+	const quantities = document.querySelectorAll(".quantities") 
+	const itemsList = ["Moldy Cheese", "Aerated Lunchly", "Stillwater"]
+   document.querySelector('#submit').addEventListener('click', Submit)
+
+
+   function Submit() {
+     const timestamp = buildTimestamp()
+	  let total = 0
+ 	  let cart = { }
+ 	  for  (let i=0; i<quantities.length; i=i+1) {
+ 	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+			  let price = prices[i].innerHTML.replace(' Aura Points', '')
+			  total = total + quantities[i].value * price 
+ 	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+ 	  	}
+ 	  	quantities[i].value = ""
+ 	  }
+		
+     
+     set(ref(db, timestamp), {
+         Name: Name.value,
+       email: Email.value,
+		  cart: cart,
+		  totalPrice: total,
+		  paid: "not yet",
+     });
+
+     Name.value = ""
+     Email.value = ""
+   }
+
+
+
+
+   function buildTimestamp() {
+     const now = new Date();
+     let timestamp = now.getFullYear().toString() + "/";
+     //const month = now.toLocaleString('default', { month: 'long' });
+
+     let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+     month = month.toString()
+     month = addLeadingZero(month)
+     timestamp += month + "/"; 
+
+     let date = now.getDate().toString()
+     date = addLeadingZero(date)
+     timestamp += date + "/";
+
+     let hours = now.getHours().toString()
+     hours = addLeadingZero(hours)
+     timestamp += hours + ":";
+
+     let minutes = now.getMinutes().toString()
+     minutes = addLeadingZero(minutes)
+     timestamp += minutes + ":";
+
+     let seconds = now.getSeconds().toString()
+     seconds = addLeadingZero(seconds)
+     timestamp += seconds;
+   
+     return timestamp
+   }
+   
+   function addLeadingZero(units) {
+     if (units.length < 2) {
+       units = "0" + units
+     }
+     return units
+   }
+	
+ </script>
+
+</body>
