@@ -81,6 +81,11 @@ small {
   font-family: "Sour Gummy", sans-serif;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIdoXqEM8QZc833_LVliJRnsDgtxpFb0ZWWQ&s");
 }
+.fourth{
+  font-family: "Sour Gummy", sans-serif;
+  background-image: url("https://media.istockphoto.com/id/1008428854/photo/gluten-free-bagel-breakfast-sandwich.jpg?s=612x612&w=0&k=20&c=AooxF5a-zBq5a5-tMuguvJkl5oZbQSE24r-1ELWSfls=");
+}
+
 .price {
   float: right;
 }
@@ -130,6 +135,12 @@ small {
   <p>Stillwater <span class="price">250 Aura Points</span><br />
   <small>A Jonkler original drink. This is a very delicious mix of bacteria and old water, that has made it go still. A classic Jonkler delicacy. </small></p>
 </div>
+<div class="fourth">
+<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Bacon Egg N' Cheese <span class="price">500 Aura Points</span><br />
+  <small>Can I get a Bacon Egg and Cheese, Cheese, Cheese, Cheese- This sandwich will send your tastebuds to heaven! </small></p>
+</div>
+
 <br><br>
   <input id="Name" type="Name" placeholder="Your Name">
   <input id="Email" type="Email" placeholder="Your Email">
@@ -167,7 +178,7 @@ small {
    const Email = document.querySelector("#Email")
 	const prices = document.querySelectorAll(".price") 
 	const quantities = document.querySelectorAll(".quantities") 
-	const itemsList = ["Moldy Cheese", "Aerated Lunchly", "Stillwater"]
+	const itemsList = ["Moldy Cheese", "Aerated Lunchly", "Stillwater", "Bacon Egg N' Cheese"]
    document.querySelector('#submit').addEventListener('click', Submit)
 
 
